@@ -89,15 +89,12 @@ int  DynamicProgramming::findingMinimum(std::vector<int> *S, int p){
 
     for (int i = 0; i < S->size(); i++) {
         std::vector<int> smaller = *S;
+        int a  = (*S)[i];
         auto j = smaller.begin();
-        while (j != smaller.end()) {
-            if (*j == (*S)[i]) {
-                smaller.erase(j);
-                break;
-            } else
-                j.operator++();
-        }
-        answer = std::min(matrix[p][(*S)[i]] + D(&smaller, (*S)[i]), answer);
+        std::advance(j, i);
+        smaller.erase(j);
+
+        answer = std::min(matrix[p][a] + D(&smaller, a), answer);
     }
     return  answer;
 }

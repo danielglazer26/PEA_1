@@ -3,7 +3,7 @@
 int main() {
     /*auto * bruteForce = new BruteForce(true);
     bruteForce->bruteForceAlgorithm(0);
-    bruteForce->showTheShortestPath();
+    //bruteForce->showTheShortestPath();
     delete bruteForce;*/
     DynamicProgramming *dynamicProgramming = new DynamicProgramming(true);
     dynamicProgramming->test2();
