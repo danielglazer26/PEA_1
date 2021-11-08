@@ -35,12 +35,18 @@ void BruteForce::bruteForceAlgorithm(int sourceVertex) {
 
         //sprawdzanie, czy obecny koszt ścieżki jest mniejszy od obecnie najmniejszego
         if (currentWeight < shortest) {
+
+            //kopiowanie obecnej ścieżki do najkrótszej ścieżki
             std::copy(currentPath, &currentPath[matrixWeights->getSize()], shortestPath);
             shortest = currentWeight;
+
+            //wyświetlanie procentowego odchylenia od wartości optymalnej
             std::cout << shortest
-            << "   "
-            << 100 * (((float)(shortest - matrixWeights->getOptimum()))/ (float)matrixWeights->getOptimum())
-            << "% \n";
+                      << "   "
+                      << 100 *
+                         (((float) (shortest - matrixWeights->getOptimum()))
+                          / (float) matrixWeights->getOptimum())
+                      << "% \n";
         }
 
     }

@@ -11,23 +11,23 @@ private:
 public:
     std::vector<int> path;
     int level;
-    int **matrix_reduced;
+    int **matrixReduced;
     int cost = 0;
     int vertex;
 
     Node(int vertex, int numberOfVertexes) {
         this->vertex = vertex;
         this->numberOfVertexes = numberOfVertexes;
-        matrix_reduced = new int *[numberOfVertexes];
+        matrixReduced = new int *[numberOfVertexes];
         for (int i = 0; i < numberOfVertexes; i++) {
-            matrix_reduced[i] = new int[numberOfVertexes];
+            matrixReduced[i] = new int[numberOfVertexes];
         }
     }
 
     void copyMatrix(int **m) const {
         for (int i = 0; i < numberOfVertexes; i++) {
             for (int j = 0; j < numberOfVertexes; ++j) {
-                this->matrix_reduced[i][j] = m[i][j];
+                this->matrixReduced[i][j] = m[i][j];
             }
         }
     }
@@ -39,9 +39,9 @@ public:
 
     ~Node() {
         for (int i = 0; i < numberOfVertexes; i++) {
-            delete[] matrix_reduced[i];
+            delete[] matrixReduced[i];
         }
-        delete[]matrix_reduced;
+        delete[]matrixReduced;
     }
 };
 
