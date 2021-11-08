@@ -2,26 +2,38 @@
 #define ALGORYTMY2_DYNAMICPROGRAMMING_H
 
 
-#include "RepresentationOfGraph/GraphRepresentation.h"
+#include <map>
+#include "RepresentationOfGraph/Matrix.h"
 
 class DynamicProgramming {
 
 private:
-    GraphRepresentation *gr;
+    struct compareSize{
+        bool operator()(std::vector<int> a, std::vector<int> b) {
+            return (a.size() < b.size());
+        }
+    };
+    struct compareSizeMap{
+        bool operator()(std::pair<std::vector<int>, int> a, std::pair<std::vector<int>, int> b) {
+            return (a.first.size() < b.first.size());
+        }
+    };
 
+    Matrix *matrixWeights;
     int ** matrix;
 
 public:
 
     DynamicProgramming(bool directed) {
-        gr = new GraphRepresentation(directed);
-        matrix = gr->getMatrix()->getMatrixWeights();
+        matrixWeights = new Matrix();
+        matrix = matrixWeights->getMatrixWeights();
     }
 
     void test();
 
     ~DynamicProgramming(){
-        delete gr;
+        matrixWeights->deleteMatrixTable(matrix);
+        delete matrixWeights;
     }
 
     void test2();
@@ -31,6 +43,18 @@ public:
     void showAnswer(std::vector<int> *S, int p);
 
     int findingMinimum(std::vector<int> *S, int p);
+
+    void algorithmHeldKarp();
+
+    void generate_subsets(std::vector<int> vector, int n, int k);
+
+    void test3();
+
+    void showVector();
+
+    int D2(std::vector<int> *S, int p);
+
+    void print_map(const std::map<std::vector<int>, int> &m);
 };
 
 

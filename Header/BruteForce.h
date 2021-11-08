@@ -1,5 +1,5 @@
 #include <vector>
-#include "RepresentationOfGraph/GraphRepresentation.h"
+#include "RepresentationOfGraph/Matrix.h"
 
 #ifndef ALGORYTMYDOKLADNE_BRUTEFORCE_H
 #define ALGORYTMYDOKLADNE_BRUTEFORCE_H
@@ -8,20 +8,20 @@
 class BruteForce {
 
 private:
-    GraphRepresentation *gr;
+    Matrix *matrixWeights;
     int shortest = INT_MAX;
-    int * currentPath;
-    int * shortestPath;
-    std::vector <int> nodes;
-    int ** matrix;
+    int *currentPath;
+    int *shortestPath;
+    std::vector<int> nodes;
+    int **matrix;
     int iteration = 0;
 public:
 
-    BruteForce(bool directed) {
-        gr = new GraphRepresentation(directed);
-        matrix = gr->getMatrix()->getMatrixWeights();
-        currentPath = new int [gr->getVerticesNumber()];
-        shortestPath = new int [gr->getVerticesNumber()];
+    BruteForce() {
+        matrixWeights = new Matrix();
+        matrix = matrixWeights->getMatrixWeights();
+        currentPath = new int[matrixWeights->getSize() + 1];
+        shortestPath = new int[matrixWeights->getSize() + 1];
     }
 
     void bruteForceAlgorithm(int sourceVertex);
@@ -29,7 +29,8 @@ public:
     void showTheShortestPath();
 
     ~BruteForce() {
-        delete gr;
+        matrixWeights->deleteMatrixTable(matrix);
+        delete matrixWeights;
         delete currentPath;
         delete shortestPath;
     }

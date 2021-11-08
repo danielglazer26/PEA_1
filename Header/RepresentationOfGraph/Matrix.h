@@ -3,35 +3,40 @@
 #define  ALGORYTMYDOKLADNE_MATRIX_H
 
 
-#include "CombinedList.h"
+#include "../LoadFromFile.h"
 
 class Matrix {
 public:
-    Matrix(int s) {
-        size = s;
-        createTables();
+    Matrix() {
+        loadData();
     }
 
     ~Matrix() {
-        deleteMatrixTable();
+
     }
 
     void showMatrixWages();
 
-    void createMatrix(CombinedList *combinedList);
-
     int getSize() const;
 
+    int getOptimum() const;
+
     int **getMatrixWeights() const;
+
+    void deleteMatrixTable(int **matrixW);
 
 private:
     int size;
 
-    int **matrixWeights;
+    int optimum;
+
+    int **matrixWeights = nullptr;
 
     void createTables();
 
-    void deleteMatrixTable();
+    void createMatrix(LoadFromFile *loadFromFile);
+
+    void loadData();
 };
 
 

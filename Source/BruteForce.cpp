@@ -7,7 +7,7 @@ void BruteForce::bruteForceAlgorithm(int sourceVertex) {
     int source = sourceVertex;
     currentPath[0] = sourceVertex;
 
-    for (int i = 0; i < gr->getVerticesNumber(); i++) {
+    for (int i = 0; i < matrixWeights->getSize(); i++) {
         if (i != source) {
             nodes.push_back(i);
         }
@@ -17,7 +17,7 @@ void BruteForce::bruteForceAlgorithm(int sourceVertex) {
 
         int currentWeight = 0;
         int j = source;
-        for (int i = 0; i < gr->getVerticesNumber() - 1; i++) {
+        for (int i = 0; i < matrixWeights->getSize() - 1; i++) {
             currentWeight += matrix[j][nodes[i]];
             j = nodes[i];
             currentPath[i + 1] = j;
@@ -25,9 +25,12 @@ void BruteForce::bruteForceAlgorithm(int sourceVertex) {
         currentWeight += matrix[j][source];
 
         if (currentWeight < shortest) {
-            std::copy(currentPath, &currentPath[gr->getVerticesNumber() - 1], shortestPath);
+            std::copy(currentPath, &currentPath[matrixWeights->getSize()], shortestPath);
             shortest = currentWeight;
-            std::cout << shortest << "   " << 100 * (shortest - gr->getOptimum())/ gr->getOptimum() << "% \n";
+            std::cout << shortest
+            << "   "
+            << 100 * (shortest - matrixWeights->getOptimum())/ matrixWeights->getOptimum()
+            << "% \n";
         }
 
         iteration++;
@@ -36,9 +39,9 @@ void BruteForce::bruteForceAlgorithm(int sourceVertex) {
 }
 
 void BruteForce::showTheShortestPath() {
-    for (int i = 0; i < gr->getVerticesNumber() - 2; i++) {
+    for (int i = 0; i < matrixWeights->getSize(); i++) {
         std::cout << shortestPath[i] << "->";
     }
-    std::cout << shortestPath[gr->getVerticesNumber() - 2];
+    std::cout << 0 << "\n";
 }
 

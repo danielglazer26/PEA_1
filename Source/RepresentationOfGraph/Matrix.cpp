@@ -8,31 +8,38 @@ void Matrix::createTables() {
     matrixWeights = new int *[size];
 
     for (int i = 0; i < size; i++) {
-        matrixWeights[i] = new int [size];
-        for (int j = 0; j < size; j++) {
-            matrixWeights[i][j] = INT32_MAX;
-        }
+        matrixWeights[i] = new int[size];
+    }
+
+}
+
+void Matrix::loadData() {
+    auto *loadFromFile = new LoadFromFile();
+
+    //wczytujemy podstawowe dane z pliku
+    if (loadFromFile->openFile()) {
+        size = loadFromFile->getDataFromFile();
+        createTables();
+        createMatrix(loadFromFile);
+        std::cout << "Wczytano dane\n";
+
+    } else {
+        std::cout << "Brak pliku\n";
     }
 }
 
-//tworzenie macierzy wag na podstawie listy polaczonych sasiadow
-void Matrix::createMatrix(CombinedList *combinedList) {
+//tworzenie macierzy wag
+void Matrix::createMatrix(LoadFromFile *loadFromFile) {
 
-    for (int i = 0; i < combinedList->getSize(); i++) {
-
-        CombinedList::edge *pointer = combinedList->getList()[i];
-        while (true) {
-            int vE = pointer->vertex;
-            int w = pointer->weight;
-
-            matrixWeights[i][vE] = w;
-
-            if (pointer->next != nullptr)
-                pointer = pointer->next;
-            else
-                break;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            matrixWeights[i][j] = loadFromFile->getDataFromFile();
+            if (matrixWeights[i][j] == -1 || matrixWeights[i][j] == 0)
+                matrixWeights[i][j] = INT_MAX;
         }
     }
+    optimum = loadFromFile->getDataFromFile();
+
 }
 
 //wyswietlanie macierz wag
@@ -64,11 +71,11 @@ void Matrix::showMatrixWages() {
 }
 
 //usuwanie macierzy wag
-void Matrix::deleteMatrixTable() {
+void Matrix::deleteMatrixTable(int **matrixW) {
     for (int i = 0; i < size; i++) {
-        delete[] matrixWeights[i];
+        delete[] matrixW[i];
     }
-    delete []matrixWeights;
+    delete[]matrixW;
 }
 
 int Matrix::getSize() const {
@@ -77,4 +84,8 @@ int Matrix::getSize() const {
 
 int **Matrix::getMatrixWeights() const {
     return matrixWeights;
+}
+
+int Matrix::getOptimum() const {
+    return optimum;
 }
