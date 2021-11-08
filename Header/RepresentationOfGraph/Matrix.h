@@ -11,10 +11,6 @@ public:
         loadData();
     }
 
-    ~Matrix() {
-
-    }
-
     void showMatrixWages();
 
     int getSize() const;

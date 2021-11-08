@@ -12,7 +12,7 @@ void Matrix::createTables() {
     }
 
 }
-
+//wczytanie pliku
 void Matrix::loadData() {
     auto *loadFromFile = new LoadFromFile();
 

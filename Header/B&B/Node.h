@@ -33,7 +33,7 @@ public:
     }
 
     void copyPath(std::vector<int> p) {
-        this->path = p;
+        this->path = std::move(p);
         this->path.push_back(vertex);
     }
 
@@ -46,4 +46,4 @@ public:
 };
 
 
-#endif //ALGORYTMY2_NODE_H
+#endif //ALGORYTMY2_NODEDP_H

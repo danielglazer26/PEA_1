@@ -1,5 +1,5 @@
 #include <vector>
-#include "RepresentationOfGraph/Matrix.h"
+#include "../RepresentationOfGraph/Matrix.h"
 
 #ifndef ALGORYTMYDOKLADNE_BRUTEFORCE_H
 #define ALGORYTMYDOKLADNE_BRUTEFORCE_H
@@ -14,7 +14,6 @@ private:
     int *shortestPath;
     std::vector<int> nodes;
     int **matrix;
-    int iteration = 0;
 public:
 
     BruteForce() {

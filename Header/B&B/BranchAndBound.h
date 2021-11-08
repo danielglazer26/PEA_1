@@ -9,17 +9,6 @@
 #include <queue>
 
 class BranchAndBound {
-private:
-
-    struct compareCost{
-        bool operator()(Node* a, Node *b) {
-            return (a->cost > b->cost);
-        }
-    };
-
-    Matrix * matrixWeights;
-    int ** matrix;
-    std::priority_queue <Node* ,std::vector<Node*>, compareCost> priorityQueue;
 
 public:
 
@@ -28,24 +17,36 @@ public:
         matrix = matrixWeights->getMatrixWeights();
     }
 
-    ~BranchAndBound(){
+    ~BranchAndBound() {
         matrixWeights->deleteMatrixTable(matrix);
         delete matrixWeights;
     }
 
-    void reduceRow(int **matrixReduced, Node *node);
-
     void branchAndBoundAlgorithm();
+
+private:
+
+    int **matrix;
+
+    Matrix *matrixWeights;
+
+    struct compareCost {
+        bool operator()(Node *a, Node *b) { return (a->cost > b->cost); }
+    };
+
+    std::priority_queue<Node *, std::vector<Node *>, compareCost> priorityQueue;
+
+    void calculateCost(int **matrixReduced, Node *node);
+
+    void reduceRow(int **matrixReduced, Node *node);
 
     void reduceColumn(int **matrixReduced, Node *node);
 
     void makeInfinity(Node *parent, Node *child);
 
+    static void showPath(const std::vector<int> &path);
+
     void solveLevel();
-
-    static void showPath(const std::vector<int>& path);
-
-    void calculateCost(int **matrixReduced, Node *node);
 };
 
 
