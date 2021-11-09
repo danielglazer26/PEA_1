@@ -46,4 +46,4 @@ public:
 };
 
 
-#endif //ALGORYTMY2_NODEDP_H
+#endif //ALGORYTMY2_NODE_H

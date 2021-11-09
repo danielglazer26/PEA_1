@@ -2,7 +2,7 @@
 #include <iostream>
 #include "../../Header/RepresentationOfGraph/Matrix.h"
 
-//tworzenie tablicy wag
+///tworzenie tablicy wag
 void Matrix::createTables() {
 
     matrixWeights = new int *[size];
@@ -12,29 +12,29 @@ void Matrix::createTables() {
     }
 
 }
-//wczytanie pliku
+
+///wczytanie pliku
 void Matrix::loadData() {
     auto *loadFromFile = new LoadFromFile();
 
-    //wczytujemy podstawowe dane z pliku
+    ///wczytujemy podstawowe dane z pliku
     if (loadFromFile->openFile()) {
         size = loadFromFile->getDataFromFile();
         createTables();
         createMatrix(loadFromFile);
         std::cout << "Wczytano dane\n";
 
-    } else {
-        std::cout << "Brak pliku\n";
     }
+    delete loadFromFile;
 }
 
-//tworzenie macierzy wag
+///tworzenie macierzy wag
 void Matrix::createMatrix(LoadFromFile *loadFromFile) {
 
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             matrixWeights[i][j] = loadFromFile->getDataFromFile();
-            if (matrixWeights[i][j] == -1 || matrixWeights[i][j] == 0)
+            if (i == j)
                 matrixWeights[i][j] = INT_MAX;
         }
     }
@@ -42,7 +42,7 @@ void Matrix::createMatrix(LoadFromFile *loadFromFile) {
 
 }
 
-//wyswietlanie macierz wag
+///wyswietlanie macierz wag
 void Matrix::showMatrixWages() {
 
     std::cout << "  ";
@@ -70,7 +70,7 @@ void Matrix::showMatrixWages() {
 
 }
 
-//usuwanie macierzy wag
+///usuwanie macierzy wag
 void Matrix::deleteMatrixTable(int **matrixW) {
     for (int i = 0; i < size; i++) {
         delete[] matrixW[i];

@@ -3,7 +3,7 @@
 #define  ALGORYTMYDOKLADNE_MATRIX_H
 
 
-#include "../LoadFromFile.h"
+#include "LoadFromFile.h"
 
 class Matrix {
 public:

@@ -14,19 +14,23 @@ public:
 
     BranchAndBound() {
         matrixWeights = new Matrix();
-        matrix = matrixWeights->getMatrixWeights();
+        if (matrixWeights->getMatrixWeights() != nullptr)
+            matrix = matrixWeights->getMatrixWeights();
     }
 
     ~BranchAndBound() {
-        matrixWeights->deleteMatrixTable(matrix);
+        if (matrixWeights->getMatrixWeights() != nullptr)
+            matrixWeights->deleteMatrixTable(matrix);
         delete matrixWeights;
     }
 
     void branchAndBoundAlgorithm();
 
+    int **getMatrix() const;
+
 private:
 
-    int **matrix;
+    int **matrix = nullptr;
 
     Matrix *matrixWeights;
 

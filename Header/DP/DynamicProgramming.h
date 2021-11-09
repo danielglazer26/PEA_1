@@ -5,14 +5,15 @@
 #include <map>
 #include "../RepresentationOfGraph/Matrix.h"
 #include "NodeDP.h"
+
 class DynamicProgramming {
 
 private:
 
-    int ** matrix;
+    int **matrix = nullptr;
     Matrix *matrixWeights;
 
-    static void showAnswer(NodeDP *node);
+    void showAnswer(NodeDP *node);
 
     void findingMinimum(NodeDP *n);
 
@@ -20,13 +21,18 @@ public:
 
     DynamicProgramming() {
         matrixWeights = new Matrix();
-        matrix = matrixWeights->getMatrixWeights();
+        if (matrixWeights->getMatrixWeights() != nullptr)
+            matrix = matrixWeights->getMatrixWeights();
     }
 
-    ~DynamicProgramming(){
-        matrixWeights->deleteMatrixTable(matrix);
+    ~DynamicProgramming() {
+        if (matrixWeights->getMatrixWeights() != nullptr)
+            matrixWeights->deleteMatrixTable(matrix);
         delete matrixWeights;
+
     }
+
+    int **getMatrix() const;
 
     void dynamicProgrammingAlgorithm();
 

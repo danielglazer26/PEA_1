@@ -1,7 +1,7 @@
-#include "../Header/LoadFromFile.h"
+#include "../../Header/RepresentationOfGraph/LoadFromFile.h"
 #include <iostream>
 
-//zaladowanie pliku grafu
+///załadowanie pliku grafu
 bool LoadFromFile::openFile(){
     std::string nameOfFile /*= "tsp10.txt"*/;
 
@@ -20,7 +20,7 @@ bool LoadFromFile::openFile(){
         return true;
     }
 }
-//pobieranie liczb z plikow
+///pobieranie liczb z plików
 int LoadFromFile::getDataFromFile() {
 
     int number;
