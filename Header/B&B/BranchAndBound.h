@@ -24,11 +24,11 @@ public:
         delete matrixWeights;
     }
 
-    void branchAndBoundAlgorithm();
-
     int **getMatrix() const;
 
-private:
+    virtual void branchAndBoundAlgorithm();
+
+protected:
 
     int **matrix = nullptr;
 
@@ -42,15 +42,15 @@ private:
 
     void calculateCost(int **matrixReduced, Node *node);
 
-    void reduceRow(int **matrixReduced, Node *node);
+     void reduceRow(int **matrixReduced, Node *node);
 
-    void reduceColumn(int **matrixReduced, Node *node);
+     void reduceColumn(int **matrixReduced, Node *node);
 
-    void makeInfinity(Node *parent, Node *child);
+    virtual void makeInfinity(Node *parent, Node *child);
 
     static void showPath(const std::vector<int> &path);
 
-    void solveLevel();
+    virtual void solveLevel();
 };
 
 
