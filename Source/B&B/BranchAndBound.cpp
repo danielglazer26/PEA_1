@@ -108,7 +108,7 @@ void BranchAndBound::solveLevel() {
 
         int vertexTop = nodeTop->vertex;
 
-        /*///wyświetlanie procentowego odchylenia od wartości optymalnej
+        ///wyświetlanie procentowego odchylenia od wartości optymalnej
         if(cost != nodeTop->cost) {
             std::cout << nodeTop->cost
                       << "   "
@@ -116,7 +116,7 @@ void BranchAndBound::solveLevel() {
                                 / (float) matrixWeights->getOptimum())
                       << "% \n";
             cost = nodeTop->cost;
-        }*/
+        }
 
         ///sprawdzamy, czy nasz węzeł nie jest ostatnim z cyklu
         if (nodeTop->level == matrixWeights->getSize() - 1) {

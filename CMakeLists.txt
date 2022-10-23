@@ -10,4 +10,7 @@ add_executable(Algorytmy
         Header/RepresentationOfGraph/Matrix.h
         Source/B&B/BranchAndBound.cpp
         Header/B&B/BranchAndBound.h
-        Header/B&B/Node.h Header/B&B/BranchAndBoundThreads.h Source/B&B/BranchAndBoundThreads.cpp)
+        Header/B&B/Node.h
+        Header/B&B/BranchAndBoundThreads.h
+        Source/B&B/BranchAndBoundThreads.cpp
+        Source/B&B/ThreadPool.cpp Header/B&B/ThreadPool.h)

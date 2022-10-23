@@ -10,7 +10,7 @@ private:
     int numberOfVertexes;
 public:
     std::vector<int> path;
-    int level;
+    int level{};
     int **matrixReduced;
     int cost = 0;
     int vertex;

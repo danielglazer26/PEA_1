@@ -32,7 +32,7 @@ void menu() {
 int main() {
     //menu();
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    auto *branchAndBound = new BranchAndBound();
+   auto *branchAndBound = new BranchAndBound();
     branchAndBound->branchAndBoundAlgorithm();
     delete branchAndBound;
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();

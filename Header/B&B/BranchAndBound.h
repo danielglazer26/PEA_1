@@ -35,16 +35,22 @@ protected:
     Matrix *matrixWeights;
 
     struct compareCost {
-        bool operator()(Node *a, Node *b) { return (a->cost > b->cost); }
+        bool operator()(Node *a, Node *b) {
+            if(a->cost == b->cost){
+                return a->level < b->level;
+            }else{
+                return a->cost > b->cost;
+            }
+        }
     };
 
     std::priority_queue<Node *, std::vector<Node *>, compareCost> priorityQueue;
 
     void calculateCost(int **matrixReduced, Node *node);
 
-     void reduceRow(int **matrixReduced, Node *node);
+    /*virtual*/ void reduceRow(int **matrixReduced, Node *node);
 
-     void reduceColumn(int **matrixReduced, Node *node);
+    /*virtual*/ void reduceColumn(int **matrixReduced, Node *node);
 
     virtual void makeInfinity(Node *parent, Node *child);
 
