@@ -19,7 +19,7 @@ public:
 
     int **getMatrixWeights() const;
 
-    void deleteMatrixTable(int **matrixW);
+    void deleteMatrixTable(int **matrixW) const;
 
 private:
     int size;

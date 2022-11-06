@@ -3,11 +3,11 @@
 
 ///załadowanie pliku grafu
 bool LoadFromFile::openFile(){
-    std::string nameOfFile = "gr17.tsp";
+    std::string nameOfFile;
 
-    /*std::cout << "Podaj nazwe pliku" << std::endl;
+    std::cout << "Podaj nazwe pliku" << std::endl;
     std::cin >> nameOfFile;
-    std::cout << "\n";*/
+    std::cout << "\n";
     file.open(nameOfFile);
     if(!file.is_open()) {
         std::cout << "Nie ma takiego pliku\n";

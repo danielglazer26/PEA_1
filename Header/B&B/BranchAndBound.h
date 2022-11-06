@@ -24,9 +24,9 @@ public:
         delete matrixWeights;
     }
 
-    int **getMatrix() const;
-
     virtual void branchAndBoundAlgorithm();
+
+    virtual int **getMatrix();
 
 protected:
 

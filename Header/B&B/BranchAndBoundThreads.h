@@ -1,7 +1,3 @@
-//
-// Created by elmod on 18.10.2022.
-//
-
 #ifndef ALGORYTMY_BRANCHANDBOUNDTHREADS_H
 #define ALGORYTMY_BRANCHANDBOUNDTHREADS_H
 
@@ -10,25 +6,23 @@
 
 class BranchAndBoundThreads : BranchAndBound {
 
-    const int modulo = 10;
+    int numberOfThreads;
     std::mutex queueLock;
+
     void solveLevel() override;
 
 public:
-    BranchAndBoundThreads() : BranchAndBound(){}
+    explicit BranchAndBoundThreads(int numberOfThreads) {
+        this->numberOfThreads = numberOfThreads;
+    }
+
     void branchAndBoundAlgorithm() override;
 
     void countCostForOneNode(Node *nodeTop, int j);
 
-    //void countReduceRow(int **matrixReduced, Node *node, int j);
-
-    //void reduceRow(int **matrixReduced, Node *node) override;
-
-    /*void reduceColumn(int **matrixReduced, Node *node) override;*/
-
-    //void countReduceColumn(int **matrixReduced, Node *node, int j);
-
     void makeInfinity(Node *parent, Node *child) override;
+
+    int ** getMatrix() override;
 };
 
 

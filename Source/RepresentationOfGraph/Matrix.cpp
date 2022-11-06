@@ -42,7 +42,7 @@ void Matrix::createMatrix(LoadFromFile *loadFromFile) {
 
 }
 
-///wyswietlanie macierz wag
+///wyświetlanie macierz wag
 void Matrix::showMatrixWages() {
 
     std::cout << "  ";
@@ -71,7 +71,7 @@ void Matrix::showMatrixWages() {
 }
 
 ///usuwanie macierzy wag
-void Matrix::deleteMatrixTable(int **matrixW) {
+void Matrix::deleteMatrixTable(int **matrixW) const {
     for (int i = 0; i < size; i++) {
         delete[] matrixW[i];
     }
