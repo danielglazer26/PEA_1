@@ -120,6 +120,7 @@ void BranchAndBound::solveLevel() {
 
         ///sprawdzamy, czy nasz węzeł nie jest ostatnim z cyklu
         if (nodeTop->level == matrixWeights->getSize() - 1) {
+            std::cout<<"Wynik: " << nodeTop->cost << std::endl;
             /*showPath(nodeTop->path);*/
             break;
         }

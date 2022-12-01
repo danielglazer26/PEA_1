@@ -72,6 +72,7 @@ void menu() {
 
                 branchAndBoundThreads = new BranchAndBoundThreads(numberOfThreads);
 
+                std::cout<< "Wielowątkowo" <<std::endl;
                 begin = std::chrono::steady_clock::now();
                 if (branchAndBoundThreads->getMatrix() != nullptr)
                     branchAndBoundThreads->branchAndBoundAlgorithm();
@@ -93,6 +94,9 @@ void menu() {
 }
 
 int main() {
+    std::string zmienna;
+
+    std::cin >> zmienna;
     menu();
     return 0;
 }
